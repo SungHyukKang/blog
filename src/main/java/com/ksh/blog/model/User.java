@@ -28,7 +28,7 @@ public class User {
 	@Id//pk
 	@GeneratedValue(strategy = GenerationType.IDENTITY)//프로젝트에서 연결된 DB의 넘버링 전량을 따라간다.
 	private int id; //auto_increment
-	@Column(nullable = false ,length= 30)
+	@Column(nullable = false ,length= 30,unique=true)
 	private String username; //아이디
 	
 	@Column(nullable = false ,length= 100)
