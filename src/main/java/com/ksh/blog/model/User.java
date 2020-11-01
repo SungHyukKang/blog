@@ -10,7 +10,6 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
-import org.hibernate.annotations.ColumnDefault;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.DynamicInsert;
 
@@ -39,11 +38,11 @@ public class User {
 	
 	@Column(nullable = false ,length= 10)
 	private String name;
+	
 	//@ColumnDefault("user")
 	//DB는 RoleType 이라는 게 없다.
 	@Enumerated(EnumType.STRING)
 	private RoleType role; // Enum을 쓰는게 좋다. //ADMIN,USER
-	
 	
 	@CreationTimestamp // 시간 자동 입력
 	private Timestamp createDate;
