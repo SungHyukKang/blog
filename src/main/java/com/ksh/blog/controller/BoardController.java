@@ -22,7 +22,6 @@ public class BoardController {
 	private BoardService boardService;
 	@GetMapping({"","/"})
 	public String index(Model model,@PageableDefault(size=3,sort="id",direction = Sort.Direction.DESC) Pageable pageable) {
-		
 		model.addAttribute("boards",boardService.글목록(pageable));
 		return "index"; //viewResolver 작동 !!!!!! model의 정보를 가지고 index로 이동
 	}
