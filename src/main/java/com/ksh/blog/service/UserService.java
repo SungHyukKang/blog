@@ -40,12 +40,24 @@ public class UserService {
 				.orElseThrow(()->{
 					return new IllegalArgumentException("회원찾기실패");
 				});
-		String rawPassword= user.getPassword();
-		String encPassword = encoder.encode(rawPassword);
-		persistance.setPassword(encPassword);
-		persistance.setEmail(user.getEmail());
+		
+		// Validate 체크 => oauth 필드에 값이 없으면 수정가능
+		if(persistance.getOauth()==null || persistance.getOauth()=="") {
+			String rawPassword= user.getPassword();
+			String encPassword = encoder.encode(rawPassword);
+			persistance.setPassword(encPassword);
+			persistance.setEmail(user.getEmail());
+		}
+		
 		
 		//회원 수정 함수 종료시 == 서비스 종료 == 트랜잭션 종료 == commit 자동.
 		//영속화된 persistance 객체의 변화가 감지(더티체킹)되어 update 문을 날려줌.
+	}
+	@Transactional(readOnly=true)
+	public User 회원찾기(String username) {
+		User user = userRepository.findByUsername(username).orElseGet(()->{
+			return new User();
+		});
+		return  user;
 	}
 }

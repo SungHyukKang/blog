@@ -11,10 +11,6 @@
 		</div>
 
 		<div class="form-group">
-			<label for="name">Name</label> <input type="text" class="form-control" placeholder="Enter name" id="name">
-		</div>
-		
-		<div class="form-group">
 			<label for="email">Email</label> <input type="email" class="form-control" placeholder="Enter email" id="email">
 		</div>
 		

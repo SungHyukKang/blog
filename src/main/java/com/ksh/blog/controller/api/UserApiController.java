@@ -25,27 +25,27 @@ import com.ksh.blog.model.User;
 public class UserApiController {
 	@Autowired
 	private UserService userService;
-	
+
 	@Autowired
 	private AuthenticationManager authenticationManager;
-	
+
 	@PostMapping("/auth/joinProc")
 	public ResponseDto<Integer> save(@RequestBody User user) {
 		System.out.println("UserApiController 호출");
 		userService.회원가입(user);
-		return new ResponseDto<Integer>(HttpStatus.OK.value(),1);//자바 오브젝트를 
+		return new ResponseDto<Integer>(HttpStatus.OK.value(), 1);// 자바 오브젝트를
 	}
+
 	@PutMapping("/user")
-	public ResponseDto<Integer> update(@RequestBody User user ) {
+	public ResponseDto<Integer> update(@RequestBody User user) {
 		userService.회원수정(user);
 		// 트랜잭션이 종료되기 때문에 DB에 값은 변경되었음.
-		//하지만 세션 값은 그대로기 때문에 우리가 직접 세션값을 변경해줄 것임.
-		Authentication authentication = authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(user.getUsername(), user.getPassword()));
+		// 하지만 세션 값은 그대로기 때문에 우리가 직접 세션값을 변경해줄 것임.
+		Authentication authentication = authenticationManager
+				.authenticate(new UsernamePasswordAuthenticationToken(user.getUsername(), user.getPassword()));
 		SecurityContextHolder.getContext().setAuthentication(authentication);
 
-		return new ResponseDto<Integer>(HttpStatus.OK.value(),1);//자바 오브젝트를 
+		return new ResponseDto<Integer>(HttpStatus.OK.value(), 1);// 자바 오브젝트를
 	}
-	
+
 }
-
-
