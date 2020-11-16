@@ -23,6 +23,8 @@
 |    게시글 작성     |          회원은 게시글을 작성할 수 있습니다.           |
 |     댓글 작성      |       회원은 게시글에 댓글을 작성할 수 있습니다.       |
 
+##시연 화면
+
 ![ezgif-7-5b47ce86927f](https://user-images.githubusercontent.com/50865982/99227378-7d41c100-282e-11eb-837a-056f377d6e96.gif)
 
 ![ezgif-7-007f92bfc9e3](https://user-images.githubusercontent.com/50865982/99227355-75821c80-282e-11eb-96eb-9450327f5c3e.gif)
